@@ -6,7 +6,7 @@ import AGG
 
 class Node(AGG.Classes.API.Node):
 
-    def __init__(self, atom_ID, element, xpos, ypos):
+    def __init__(self, atom_ID, element, xpos=0, ypos=0):
 
         self.atom_ID = atom_ID
         self.element = element

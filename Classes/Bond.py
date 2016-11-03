@@ -6,10 +6,10 @@ import AGG
 
 class Bond(AGG.Classes.API.Arc):
 
-    def __init__(self, atom_ID2, atom_ID1, bondOrder):
+    def __init__(self, atom_ID1, atom_ID2, bondOrder):
 
-        self.atom_ID2 = atom_ID2
         self.atom_ID1 = atom_ID1
+        self.atom_ID2 = atom_ID2
         self.bondOrder = bondOrder
 
     #-----------------
@@ -33,6 +33,13 @@ class Bond(AGG.Classes.API.Arc):
         Get atom_ID1
         """
         return self.atom_ID1
+
+    def getOrder(self):
+        """
+        Get bond order
+        :return:
+        """
+        return self.bondOrder
 
 
     # ----------------------------------------
