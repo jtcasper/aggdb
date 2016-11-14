@@ -3,6 +3,8 @@ Implementation of the AGG graph class for chemical compound graphs.
 """
 
 import AGG
+from Classes.Bond import Bond
+from Classes.Node import Node
 
 class Compound(AGG.Classes.API.Graph):
 
@@ -31,7 +33,7 @@ class Compound(AGG.Classes.API.Graph):
         :param atom: atom to be added
         :return: nothing
         """
-        self.atoms.update(atom)
+        self.atoms.update(atom.toDict())
 
     def addAtoms(self, compound):
         """
@@ -50,7 +52,7 @@ class Compound(AGG.Classes.API.Graph):
         :return: nothing
         """
 
-        self.bonds.update(bond)
+        self.bonds.update(bond.toDict())
 
     def addBonds(self, compound):
         """

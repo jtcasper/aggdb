@@ -6,12 +6,12 @@ import AGG
 
 class Bond(AGG.Classes.API.Arc):
 
-    def __init__(self, atom_ID1, atom_ID2, bondOrder, ID=None):
+    def __init__(self, atom_ID1, atom_ID2, bondOrder):
 
         self.atom_ID1 = atom_ID1
         self.atom_ID2 = atom_ID2
         self.bondOrder = bondOrder
-        self.ID = ID
+        self.ID = id(self)
 
     #-----------------
     # Bond Accessors
@@ -46,7 +46,19 @@ class Bond(AGG.Classes.API.Arc):
         """
         Get Bond ID
         """
-        return self.ID;
+        return self.ID
+
+    #------------------
+    # Portability
+    #------------------
+
+    def toDict(self):
+        """
+        Return a version of itself as a dictionary
+        :return:
+        """
+        return {self.getID(): self}
+
 
 
     # ----------------------------------------

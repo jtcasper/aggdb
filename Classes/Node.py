@@ -39,6 +39,13 @@ class Node(AGG.Classes.API.Node):
         """
         return self.element
 
+    def getID(self):
+        """
+        Return the atom id of this atom
+        :return:
+        """
+        return self.atom_ID
+
     #----------------------
     # Bond Addition
     #----------------------
@@ -51,6 +58,17 @@ class Node(AGG.Classes.API.Node):
         self.bonds.update(bond)
 
     #----------------------
+    # Portability
+    #----------------------
+
+    def toDict(self):
+        """
+        Return a version of itself as a dictionary
+        :return:
+        """
+        return {self.getID(): self}
+
+    #----------------------
     # API Interface methods
     #----------------------
 
@@ -61,7 +79,7 @@ class Node(AGG.Classes.API.Node):
         This is the aid generated when the compound is pulled from
         PubChem.
         """
-        return self.atom_ID
+        return self.getID()
 
     def agg_getArcs(self):
         """
