@@ -11,7 +11,7 @@ class Bond(AGG.Classes.API.Arc):
         self.atom_ID1 = atom_ID1
         self.atom_ID2 = atom_ID2
         self.bondOrder = bondOrder
-        self.ID = ID;
+        self.ID = ID
 
     #-----------------
     # Bond Accessors
