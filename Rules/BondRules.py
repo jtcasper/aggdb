@@ -1,13 +1,16 @@
 import AGG
 import AGG.Classes.Constraint as ConstraintMod
-import AGG.Classes.GraphClass.BaseGraphClass as BaseGraphClass
+import AGG.Classes.GraphClass.ExtendedGraphClass as ExtendedGraphClass
 import AGG.Classes.Rule as RuleMod
+
+from ChemOntology import ChemOntology
+
 
 # -----------------------------------------------
 # Access the types.
 # -----------------------------------------------
 
-TypeAcc = ConstraintMod.TypeAccessor(Ontology)
+TypeAcc = ConstraintMod.TypeAccessor(ChemOntology)
 
 
 #--------------------------
@@ -22,8 +25,8 @@ RuleSet = RuleMod.RuleSet("BondRules")
 
 #TODO Make an Ontology. This is starting to make sense. Use HandRules and SciIntro_ontology.
 
-Hydrogren_Constraint = ConstraintMod.UnaryValueOrConstraint(
-    Ontology, "str==", TypeAcc, ConstraintMod.Value.compile(Ontology, "atom", "hydrogen")
+Hydrogen_Constraint = ConstraintMod.UnaryValueOrConstraint(
+    ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "1")
 )
 
 #--------------------------
@@ -34,7 +37,7 @@ R01_Comment = \
 This rule tests for the existence of a hydrogen atom in the compound.
 """
 
-R01_Class = BaseGraphClass(Ontology)
+R01_Class = ExtendedGraphClass(ChemOntology)
 R01_Class.addGroundNode( "c", UnaryConstraints=[Hydrogen_Constraint])
 
-R01 =
+R01 = RuleSet.addRule("R01_hasHydrogen", R01_Class, Comment=R01_Comment)

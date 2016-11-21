@@ -61,8 +61,8 @@ class Compound(AGG.Classes.API.Graph):
 
         for arc in compound.bonds:
             b = Bond(arc.aid1, arc.aid2, arc.order)
-            for val, atom in self.getAtoms().items():
-                if atom.getID() in b.getAtoms():
+            for val, atom in self.getNodes().items():
+                if atom.getID() in b.getNodes():
                     atom.addBond(b)
             self.addBond(b)
 
@@ -70,14 +70,14 @@ class Compound(AGG.Classes.API.Graph):
     # Define accessors
     #----------------------
 
-    def getBonds(self):
+    def getArcs(self):
         """
         Return bond dictionary of this compound
         :return: Bond dictionary of this compound
         """
         return self.bonds
 
-    def getAtoms(self):
+    def getNodes(self):
         """
         Return atom dictionary of this compound
         :return: Atom dictionary of this compound
@@ -107,14 +107,14 @@ class Compound(AGG.Classes.API.Graph):
         Get the bonds that make up this compound.
         :return:
         """
-        return self.getBonds()
+        return self.getArcs()
 
     def agg_getNodes(self):
         """
         Get the atoms that make up this compound.
         :return:
         """
-        return self.getAtoms()
+        return self.getNodes()
 
     def agg_getField(self, FieldName, Subfield=None):
         """

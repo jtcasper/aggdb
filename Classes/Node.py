@@ -46,7 +46,7 @@ class Node(AGG.Classes.API.Node):
         """
         return self.atom_ID
 
-    def getBonds(self):
+    def getArcs(self):
         """
         Return the bond dictionary of this atom
         :return:
@@ -92,7 +92,7 @@ class Node(AGG.Classes.API.Node):
         """
         Returns the bonds between this atom and other atoms
         """
-        return self.getBonds()
+        return self.getArcs()
 
     def agg_getInboundArcs(self):
         """

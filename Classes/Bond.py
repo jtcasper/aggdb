@@ -18,7 +18,7 @@ class Bond(AGG.Classes.API.Arc):
     # Bond Accessors
     #-----------------
 
-    def getAtoms(self):
+    def getNodes(self):
         """
         Get both atom_ids of this bond
         """
@@ -81,7 +81,7 @@ class Bond(AGG.Classes.API.Arc):
         """
         Get the start and end nodes.
         """
-        return self.getAtoms()
+        return self.getNodes()
 
 
     def agg_getStartNode(self):
