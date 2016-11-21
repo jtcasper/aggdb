@@ -46,6 +46,13 @@ class Node(AGG.Classes.API.Node):
         """
         return self.atom_ID
 
+    def getBonds(self):
+        """
+        Return the bond dictionary of this atom
+        :return:
+        """
+        return self.bonds
+
     #----------------------
     # Bond Addition
     #----------------------
@@ -55,7 +62,7 @@ class Node(AGG.Classes.API.Node):
         Adds bond to bond dictionary
         :param bond: A bond dictionary with atom_id2, atom_id1, and bond type
         """
-        self.bonds.update(bond)
+        self.bonds.update(bond.toDict())
 
     #----------------------
     # Portability
@@ -85,7 +92,7 @@ class Node(AGG.Classes.API.Node):
         """
         Returns the bonds between this atom and other atoms
         """
-        return self.bonds
+        return self.getBonds()
 
     def agg_getInboundArcs(self):
         """

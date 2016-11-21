@@ -8,7 +8,7 @@ from Classes.Node import Node
 
 class Compound(AGG.Classes.API.Graph):
 
-    def __init__(self, id=None, atoms=None, bonds=None):
+    def __init__(self, compound):
         """
         Construct a compound, which is a graph structure in AGG.
         :param id: cid of this compound
@@ -17,11 +17,9 @@ class Compound(AGG.Classes.API.Graph):
         """
         self.atoms = {}
         self.bonds = {}
-        if atoms is not None:
-            self.atoms = atoms
-        if bonds is not None:
-            self.bonds = bonds
-        self.id = id
+        self.id = compound.cid
+        self.addAtoms(compound)
+        self.addBonds(compound)
 
     #----------------------
     #  Add graph elements
@@ -63,6 +61,9 @@ class Compound(AGG.Classes.API.Graph):
 
         for arc in compound.bonds:
             b = Bond(arc.aid1, arc.aid2, arc.order)
+            for val, atom in self.getAtoms().items():
+                if atom.getID() in b.getAtoms():
+                    atom.addBond(b)
             self.addBond(b)
 
     #----------------------
@@ -120,25 +121,25 @@ class Compound(AGG.Classes.API.Graph):
         Interface method for retreival of the field
         items from the graph if they are present.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_hasField(self, FieldName, Subfield=None):
         """
         Return True if the named field/subfield is present.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_listFields(self):
         """
         Interface method to list known fields.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_listSubfields(self, FieldName):
         """
         Interface method to list subfields of named field.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."

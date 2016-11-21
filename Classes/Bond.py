@@ -6,6 +6,7 @@ import AGG
 
 class Bond(AGG.Classes.API.Arc):
 
+
     def __init__(self, atom_ID1, atom_ID2, bondOrder):
 
         self.atom_ID1 = atom_ID1
@@ -73,14 +74,14 @@ class Bond(AGG.Classes.API.Arc):
           nor any guarantee of global uniqueness.  The
           ID should be unique within the graph, however.
         """
-        return self.getID();
+        return self.getID()
 
 
     def agg_getNodes(self):
         """
         Get the start and end nodes.
         """
-        return self.getAtoms();
+        return self.getAtoms()
 
 
     def agg_getStartNode(self):
@@ -94,21 +95,21 @@ class Bond(AGG.Classes.API.Arc):
         """
         Get the end node for this arc.
         """
-        return self.getAtom_ID2();
+        return self.getAtom_ID2()
 
     def agg_getType(self):
         """
         Get the type of this arc as per the ontology
         set in the system.
         """
-        return self.getOrder();
+        return self.getOrder()
 
 
     def agg_hasField(self, FieldName, Subfield=None):
         """
         Return True if the named field/subfield is present.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_getField(self, FieldName, Subfield=None):
@@ -116,21 +117,21 @@ class Bond(AGG.Classes.API.Arc):
         Interface method for retreival of the field
         items if they are present.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_listFields(self):
         """
         Interface method to list known fields.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
     def agg_listSubfields(self, FieldName):
         """
         Interface method to list subfields of named field.
         """
-        raise APIError, "Unimplemented Stub."
+        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
 
 
 
