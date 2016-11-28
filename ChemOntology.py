@@ -38,10 +38,15 @@ Functions = [\
 # --------------------------------------------
 
 HydrogenAtom = NodeType(
-    "citation",
+    "hydrogen",
     RequiredFields=[ElementTypeField("1", FieldType.StringType)])
 
-NodeTypes = [HydrogenAtom]
+CarbonAtom = NodeType(
+    "carbon",
+    RequiredFields=[ElementTypeField("6", FieldType.StringType)]
+)
+
+NodeTypes = [HydrogenAtom, CarbonAtom]
 
 # --------------------------------------------
 # Map Fields.
@@ -58,11 +63,16 @@ GraphFields = [MapAuth]
 # --------------------------------------------
 
 SingleBond = ArcType(
-    "Single", Directed=False,
+    "1", Directed=False,
     RequiredFields=[\
         ElementTypeField("1", FieldType.StringType)])
 
-ArcTypes = [SingleBond]
+DoubleBond = ArcType(
+    "2", Directed=False,
+    RequiredFields=[\
+        ElementTypeField("2", FieldType.StringType)])
+
+ArcTypes = [SingleBond, DoubleBond]
 
 # --------------------------------------------
 # Define the Ontology.

@@ -12,7 +12,7 @@ class Node(AGG.Classes.API.Node):
         self.element = element
         self.xpos = xpos
         self.ypos = ypos
-        self.bonds = {}
+        self.bonds = []
 
     #----------------------
     # Node Accessors
@@ -62,12 +62,12 @@ class Node(AGG.Classes.API.Node):
         Adds bond to bond dictionary
         :param bond: A bond dictionary with atom_id2, atom_id1, and bond type
         """
-        self.bonds.update(bond.toDict())
+        self.bonds.append(bond)
 
     #----------------------
     # Portability
     #----------------------
-
+    #no longer needed as now stored in list rather than dict in graph
     def toDict(self):
         """
         Return a version of itself as a dictionary
@@ -111,7 +111,7 @@ class Node(AGG.Classes.API.Node):
         Get the type of this arc as per the ontology
         set in the system.
         """
-        raise AGG.Classes.API.APIError.APIError, "Unimplemented Stub."
+        return str(self.getElement())
 
     def agg_getField(self, FieldName, Subfield=None):
         """

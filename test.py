@@ -19,24 +19,23 @@ compounds = [water, Compound(pcp.Compound.from_cid(280))]
 #water.addAtoms(c)
 #water.addBonds(c)
 
-for a, value in water.getNodes().items():
+for a in water.getNodes():
 #    n = Node(a.aid, a.element, a.x, a.y)
-    pp.pprint(value.getElement())
-    pp.pprint(value.getID())
-    for pos, bond in value.getArcs().items():
-        pp.pprint(pos)
-        pp.pprint(bond.getAtom_ID2())
+    pp.pprint(a.getElement())
+    pp.pprint(a.getID())
+    for bond in a.getArcs():
+        pp.pprint(bond.getNodes())
 
-for b, value in water.getArcs().items():
+for b in water.getArcs():
 #    a = Bond(b.aid1, b.aid2, b.order)
-    pp.pprint(value.getNodes())
-    pp.pprint(value.getOrder())
+    pp.pprint(b.getNodes())
+    pp.pprint(b.getOrder())
 
 Logger = AGG.Utils.Logger.Logger()
 Rules.updateLoggerInstance(Logger)
 
 Logger.writeStr("Hello, world!")
 
-AGG.Classes.Rule.writeCountCSV(
-        "out.txt", compounds, Rules, LogTarget=Logger,
-        PrintGraphs=True, FlushCSV=True)
+#AGG.Classes.Rule.writeCountCSV(
+#        "out.txt", compounds, Rules, LogTarget=Logger,
+#        PrintGraphs=True, FlushCSV=True)

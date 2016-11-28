@@ -15,8 +15,8 @@ class Compound(AGG.Classes.API.Graph):
         :param atoms: dictionary of atoms as Nodes
         :param bonds: dictionary of bonds as Bonds
         """
-        self.atoms = {}
-        self.bonds = {}
+        self.atoms = []
+        self.bonds = []
         self.id = compound.cid
         self.addAtoms(compound)
         self.addBonds(compound)
@@ -31,7 +31,7 @@ class Compound(AGG.Classes.API.Graph):
         :param atom: atom to be added
         :return: nothing
         """
-        self.atoms.update(atom.toDict())
+        self.atoms.append(atom)
 
     def addAtoms(self, compound):
         """
@@ -50,7 +50,7 @@ class Compound(AGG.Classes.API.Graph):
         :return: nothing
         """
 
-        self.bonds.update(bond.toDict())
+        self.bonds.append(bond)
 
     def addBonds(self, compound):
         """
@@ -61,7 +61,7 @@ class Compound(AGG.Classes.API.Graph):
 
         for arc in compound.bonds:
             b = Bond(arc.aid1, arc.aid2, arc.order)
-            for val, atom in self.getNodes().items():
+            for atom in self.getNodes():
                 if atom.getID() in b.getNodes():
                     atom.addBond(b)
             self.addBond(b)

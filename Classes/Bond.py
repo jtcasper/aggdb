@@ -52,7 +52,7 @@ class Bond(AGG.Classes.API.Arc):
     #------------------
     # Portability
     #------------------
-
+    #no longer necessary as switched from dict representation to list representation in graph
     def toDict(self):
         """
         Return a version of itself as a dictionary
@@ -102,7 +102,7 @@ class Bond(AGG.Classes.API.Arc):
         Get the type of this arc as per the ontology
         set in the system.
         """
-        return self.getOrder()
+        return str(self.getOrder())
 
 
     def agg_hasField(self, FieldName, Subfield=None):
