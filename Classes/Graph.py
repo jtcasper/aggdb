@@ -60,7 +60,14 @@ class Compound(AGG.Classes.API.Graph):
         """
 
         for arc in compound.bonds:
-            b = Bond(arc.aid1, arc.aid2, arc.order)
+            atom1 = None
+            atom2 = None
+            for atom in self.getNodes():
+                if(atom.getID() == arc.aid1):
+                    atom1 = atom
+                if(atom.getID() == arc.aid2):
+                    atom2 = atom
+            b = Bond(atom1, atom2, arc.order)
             for atom in self.getNodes():
                 if atom.getID() in b.getNodes():
                     atom.addBond(b)

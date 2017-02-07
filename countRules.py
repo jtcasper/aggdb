@@ -13,8 +13,6 @@ compounds = [water, Compound(pcp.Compound.from_cid(280))]
 Logger = AGG.Utils.Logger.Logger()
 Rules.updateLoggerInstance(Logger)
 
-Logger.writeStr("Hello, world!")
-
 AGG.Classes.Rule.writeCountCSV(
     "out.txt", compounds, Rules, LogTarget=Logger,
      PrintGraphs=True, FlushCSV=True)

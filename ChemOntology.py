@@ -37,16 +37,17 @@ Functions = [\
 # Define the associated Node Types.
 # --------------------------------------------
 
-HydrogenAtom = NodeType(
-    "hydrogen",
-    RequiredFields=[ElementTypeField("1", FieldType.StringType)])
+ElementNode = NodeType(
+    "atom"#,
+    #RequiredFields=[ElementTypeField("1", FieldType.StringType)]
+    )
 
-CarbonAtom = NodeType(
-    "carbon",
-    RequiredFields=[ElementTypeField("6", FieldType.StringType)]
-)
+# CarbonAtom = NodeType(
+#     "carbon",
+#     RequiredFields=[ElementTypeField("6", FieldType.StringType)]
+# )
 
-NodeTypes = [HydrogenAtom, CarbonAtom]
+NodeTypes = [ElementNode]
 
 # --------------------------------------------
 # Map Fields.
@@ -63,14 +64,16 @@ GraphFields = [MapAuth]
 # --------------------------------------------
 
 SingleBond = ArcType(
-    "1", Directed=False,
-    RequiredFields=[\
-        ElementTypeField("1", FieldType.StringType)])
+    "1", Directed=False#,
+    #RequiredFields=[\
+    #    ElementTypeField("1", FieldType.StringType)]
+    )
 
 DoubleBond = ArcType(
-    "2", Directed=False,
-    RequiredFields=[\
-        ElementTypeField("2", FieldType.StringType)])
+    "2", Directed=False#,
+    #RequiredFields=[\
+        #ElementTypeField("2", FieldType.StringType)]
+        )
 
 ArcTypes = [SingleBond, DoubleBond]
 

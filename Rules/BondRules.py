@@ -33,6 +33,14 @@ Carbon_Constraint = ConstraintMod.UnaryValueOrConstraint(
     ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "6")
 )
 
+Single_Bond_Constraint = ConstraintMod.UnaryValueOrConstraint(
+    ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "1")
+)
+
+Double_Bond_Constraint = ConstraintMod.UnaryValueOrConstraint(
+    ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "2")
+)
+
 
 #--------------------------
 # R01 has Hydrogen atom
@@ -71,7 +79,23 @@ This rule tests for the existence of a single bond in the compound.
 R03_Class = ExtendedGraphClass(ChemOntology)
 R03_Class.addGroundNode("s")
 R03_Class.addGroundNode("f")
-R03_Class.addGroundArc("b", "undirected", "s", "f")
+R03_Class.addGroundArc("b", "undirected", "s", "f", UnaryConstraints=[Single_Bond_Constraint])
 
 
 R03 = RuleSet.addRule("R03_hasSingleBond", R03_Class, Comment=R03_Comment)
+
+#--------------------------
+# R04 has a double bond
+#--------------------------
+R04_Comment = \
+"""
+This rule tests for the existence of a double bond in the compound.
+"""
+
+R04_Class = ExtendedGraphClass(ChemOntology)
+R04_Class.addGroundNode("s")
+R04_Class.addGroundNode("f")
+R04_Class.addGroundArc("b", "undirected", "s", "f", UnaryConstraints=[Double_Bond_Constraint])
+
+
+R04 = RuleSet.addRule("R04_hasDoubleBond", R04_Class, Comment=R04_Comment)
