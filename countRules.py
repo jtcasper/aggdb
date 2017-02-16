@@ -7,8 +7,10 @@ from Rules.BondRules import RuleSet as Rules
 
 c = pcp.Compound.from_cid(962)
 water = Compound(c)
+ethanol = Compound(pcp.Compound.from_cid(702))
 
-compounds = [water, Compound(pcp.Compound.from_cid(280))]
+compounds = [#water, Compound(pcp.Compound.from_cid(280)),
+ ethanol]
 
 Logger = AGG.Utils.Logger.Logger()
 Rules.updateLoggerInstance(Logger)

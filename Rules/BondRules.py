@@ -33,6 +33,10 @@ Carbon_Constraint = ConstraintMod.UnaryValueOrConstraint(
     ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "6")
 )
 
+Oxygen_Constraint = ConstraintMod.UnaryValueOrConstraint(
+    ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "8")
+)
+
 Single_Bond_Constraint = ConstraintMod.UnaryValueOrConstraint(
     ChemOntology, "str==", TypeAcc, ConstraintMod.Value.compile(ChemOntology, "String", "1")
 )
@@ -99,3 +103,20 @@ R04_Class.addGroundArc("b", "undirected", "s", "f", UnaryConstraints=[Double_Bon
 
 
 R04 = RuleSet.addRule("R04_hasDoubleBond", R04_Class, Comment=R04_Comment)
+
+#--------------------------
+# R05 has a hydroxyl group
+#--------------------------
+R05_Comment = \
+"""
+This rule tests for the existence of a hydroxyl group in the compound.
+"""
+
+R05_Class = ExtendedGraphClass(ChemOntology)
+R05_Class.addGroundNode("r", UnaryConstraints=[Carbon_Constraint])
+R05_Class.addGroundNode("o", UnaryConstraints=[Oxygen_Constraint])
+R05_Class.addGroundNode("h", UnaryConstraints=[Hydrogen_Constraint])
+R05_Class.addGroundArc("r_group", "undirected", "r", "o", UnaryConstraints=[Single_Bond_Constraint])
+R05_Class.addGroundArc("hydroxyl_group", "undirected", "o", "h", UnaryConstraints=[Single_Bond_Constraint])
+
+R05 = RuleSet.addRule("R05_hasHydroxylGroup", R05_Class, Comment=R05_Comment)

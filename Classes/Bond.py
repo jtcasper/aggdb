@@ -60,6 +60,15 @@ class Bond(AGG.Classes.API.Arc):
         """
         return {self.getID(): self}
 
+    #------------------
+    # Debug
+    #------------------
+    def __str__(self):
+        return "Bond ID: {}, Elements: {}, {}".format(self.getID(), self.getAtom_ID1(), self.getAtom_ID2())
+
+    def __repr__(self):
+        return self.__str__()
+
 
 
     # ----------------------------------------

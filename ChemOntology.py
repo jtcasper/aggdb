@@ -75,7 +75,13 @@ DoubleBond = ArcType(
         #ElementTypeField("2", FieldType.StringType)]
         )
 
-ArcTypes = [SingleBond, DoubleBond]
+TripleBond = ArcType(
+    "3", Directed=False#,
+    #RequiredFields=[\
+        #ElementTypeField("2", FieldType.StringType)]
+        )
+
+ArcTypes = [SingleBond, DoubleBond, TripleBond]
 
 # --------------------------------------------
 # Define the Ontology.

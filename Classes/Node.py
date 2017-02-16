@@ -75,6 +75,16 @@ class Node(AGG.Classes.API.Node):
         """
         return {self.getID(): self}
 
+
+    #------------------
+    # Debug
+    #------------------
+    def __str__(self):
+        return "Node ID: {}, Element: {}".format(self.getID(), self.getElement())
+
+    def __repr__(self):
+        return self.__str__()
+
     #----------------------
     # API Interface methods
     #----------------------
